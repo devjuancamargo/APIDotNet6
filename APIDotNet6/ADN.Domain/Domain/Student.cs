@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ADN.Domain.Domain
+﻿namespace ADN.Domain.Domain
 {
-    internal class Student
+    public class Student
     {
+        public string Id { get; set; }
+        public string Nome { get; set; }
+        public int Idade{ get; set; }
+        public DateTime DataNascimento { get; set; }
     }
 }
