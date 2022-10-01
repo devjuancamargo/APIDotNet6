@@ -24,5 +24,10 @@ namespace ADN.Data.Repository
             var result = await _collection.FindAsync(c => true);
             return result.ToList();
         }
+
+        public async Task Insert(Student student)
+        {
+            await _collection.InsertOneAsync(student);
+        }
     }
 }

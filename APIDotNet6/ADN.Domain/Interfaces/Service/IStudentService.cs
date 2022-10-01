@@ -1,4 +1,5 @@
 ﻿using ADN.Domain.Domain;
+using ADN.Domain.DTO.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace ADN.Domain.Interfaces.Service
     public interface IStudentService
     {
         Task<List<Student>> GetAll();
+        Task Insert(StudentInsertDTO studentDTO);
     }
 }
