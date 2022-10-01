@@ -1,13 +1,21 @@
-﻿using ADN.Domain.Interfaces.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ADN.Domain.Domain;
+using ADN.Domain.Interfaces.Repository;
+using ADN.Domain.Interfaces.Service;
 
 namespace ADN.Service.Services
 {
-    internal class StudentService : IStudentService
+    public class StudentService : IStudentService
     {
+        private readonly IStudentRepository _repository;
+
+        public StudentService(IStudentRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<List<Student>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
     }
 }
