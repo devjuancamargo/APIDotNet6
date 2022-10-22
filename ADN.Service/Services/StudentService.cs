@@ -18,15 +18,30 @@ namespace ADN.Service.Services
             _mapper = mapper;
         }
 
+        public Task Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Student>> GetAll()
         {
             return await _repository.GetAll();
+        }
+
+        public Task<Student> GetById(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Insert(StudentInsertDTO studentDTO)
         {
            Student student = _mapper.Map<Student>(studentDTO);
             await _repository.Insert(student);
+        }
+
+        public Task Update(string id, StudentInsertDTO student)
+        {
+            throw new NotImplementedException();
         }
     }
 }
