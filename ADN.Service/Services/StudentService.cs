@@ -23,9 +23,13 @@ namespace ADN.Service.Services
             return await _repository.GetAll();
         }
 
-        public Task<Student> GetById(string id)
+        public async Task<Student?> GetById(string id)
         {
-            throw new NotImplementedException();
+            var list = await _repository.GetById(id);
+
+            if(list.Any())
+                return list.FirstOrDefault();
+            return null;
         }
 
         public async Task Insert(StudentInsertDTO studentDTO)
@@ -34,13 +38,20 @@ namespace ADN.Service.Services
             await _repository.Insert(student);
         }
 
-        public Task Update(string id, StudentInsertDTO student)
+        public async Task Update(string id, StudentInsertDTO student)
         {
-            throw new NotImplementedException();
+            var std = await GetById(id);
+            if (std is not null)
+            {
+                std = _mapper.Map<Student>(student);
+                
+                await _repository.Update(std);
+            }
         }
-        public Task Delete(string id)
+        public async Task Delete(string id)
         {
-            throw new NotImplementedException();
+            if(await _repository.GetById(id) is not null)
+               await _repository.Delete(id);
         }
     }
 }
