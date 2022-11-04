@@ -7,8 +7,8 @@ namespace ADN.Domain.Interfaces.Repository
     {
         Task<List<Student>> GetAll();
         Task Insert(Student student);
-        Task<Student> GetById(string id);
-        Task Update(string id, StudentInsertDTO student);
+        Task<List<Student>> GetById(string id);
+        Task Update(Student student);
         Task Delete(string id);
     }
 }

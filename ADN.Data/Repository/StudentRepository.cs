@@ -19,21 +19,17 @@ namespace ADN.Data.Repository
             _collection = mongoDatabase.GetCollection<Student>(mongoStudentSettings.Value.CollectionName);
 
         }
-
-        public Task Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public async Task<List<Student>> GetAll()
         {
             var result = await _collection.FindAsync(c => true);
             return result.ToList();
         }
 
-        public Task<Student> GetById(string id)
+        public async Task<List<Student>> GetById(string id)
         {
-            throw new NotImplementedException();
+            var result = await _collection.FindAsync(c => c.Id == id);
+            return result.ToList();
         }
 
         public async Task Insert(Student student)
@@ -41,9 +37,14 @@ namespace ADN.Data.Repository
             await _collection.InsertOneAsync(student);
         }
 
-        public Task Update(string id, StudentInsertDTO student)
+        public async Task Update(Student student)
         {
-            throw new NotImplementedException();
+            var result = await _collection.FindOneAndReplaceAsync(c => c.Id == student.Id, student);
         }
+        public async Task Delete(string id)
+        {
+            await _collection.DeleteOneAsync(c => c.Id == id);
+        }
+
     }
 }

@@ -18,11 +18,6 @@ namespace ADN.Service.Services
             _mapper = mapper;
         }
 
-        public Task Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<Student>> GetAll()
         {
             return await _repository.GetAll();
@@ -40,6 +35,10 @@ namespace ADN.Service.Services
         }
 
         public Task Update(string id, StudentInsertDTO student)
+        {
+            throw new NotImplementedException();
+        }
+        public Task Delete(string id)
         {
             throw new NotImplementedException();
         }

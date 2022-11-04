@@ -12,7 +12,7 @@ namespace ADN.Domain.Interfaces.Service
     {
         Task<List<Student>> GetAll();
         Task Insert(StudentInsertDTO studentDTO);
-        Task<Student> GetById(string id);
+        Task<Student?> GetById(string id);
         Task Update(string id, StudentInsertDTO student);
         Task Delete(string id);
     }
